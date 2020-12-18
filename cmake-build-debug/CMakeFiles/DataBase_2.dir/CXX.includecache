@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/clionProjects/DataBase_2/IOFunctions.h
+iostream
+E:/clionProjects/DataBase_2/iostream
+string
+E:/clionProjects/DataBase_2/string
+
+E:/clionProjects/DataBase_2/TableFunctions.cpp
+TableFunctions.h
+E:/clionProjects/DataBase_2/TableFunctions.h
+stdlib.h
+-
+io.h
+-
+IOFunctions.h
+E:/clionProjects/DataBase_2/IOFunctions.h
+time.h
+E:/clionProjects/DataBase_2/time.h
+stdio.h
+-
+iomanip
+E:/clionProjects/DataBase_2/iomanip
+dirent.h
+E:/clionProjects/DataBase_2/dirent.h
+vector
+E:/clionProjects/DataBase_2/vector
+fstream
+E:/clionProjects/DataBase_2/fstream
+sstream
+E:/clionProjects/DataBase_2/sstream
+
+E:/clionProjects/DataBase_2/TableFunctions.h
+string
+-
+
