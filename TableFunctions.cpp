@@ -16,7 +16,7 @@
 
 const static char *path = "..\\databaseTables\\";
 
-// TODO: ÊäÈëÊä³öÄ£¿é
+// TODO: è¾“å…¥è¾“å‡ºæ¨¡å—
 
 void OutputDisplay(string *segmentName,
                    int *display,
@@ -24,15 +24,16 @@ void OutputDisplay(string *segmentName,
                    int *typeArray,
                    int totalLength) {
     int num_int = 0, num_double = 0, num_string = 0;
-    int *displayIndex = new int[totalLength]; // ¼ÇÂ¼ÒªÊä³öµÄ×Ö¶ÎÔÚ¶ÔÓ¦ÀàĞÍµÄÊı×éÖĞµÄÏÂ±ê
+    int *displayIndex = new int[totalLength]; // è®°å½•è¦è¾“å‡ºçš„å­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„ä¸­çš„ä¸‹æ ‡
     for (int i = 0; i < totalLength; i++) {
         displayIndex[i] = 0;
-//        cout << "¶Áµ½µÄ×Ö¶ÎÃûÎª----------" << segmentName[i] << "---------\n";
+//        cout << "è¯»åˆ°çš„å­—æ®µåä¸º----------" << segmentName[i] << "---------\n";
     }
     for (int i = 0; i < totalLength * 20; ++i) {
         cout << "+";
     }
     cout << endl;
+    // è·å–è¦å±•ç¤ºçš„å­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„çš„ä¸‹æ ‡
     for (int i = 0; i < totalLength; i++) {
         if (display[i] == 1) {
             cout << std::left << setw(20) << segmentName[i];
@@ -55,6 +56,7 @@ void OutputDisplay(string *segmentName,
     cout << endl;
     struct Node *p = new Node;
     p = dataHead;
+    // éå†æ‰€æœ‰æ•°æ®å¹¶æ‰“å°
     while (p != NULL) {
         for (int i = 0; i < totalLength; ++i) {
             if (display[i] == 1) {
@@ -82,10 +84,10 @@ void OutputDisplay2(string *segmentName,
                     int *typeArray,
                     int totalLength) {
     int num_int = 0, num_double = 0, num_string = 0;
-    int *displayIndex = new int[totalLength]; // ¼ÇÂ¼ÒªÊä³öµÄ×Ö¶ÎÔÚ¶ÔÓ¦ÀàĞÍµÄÊı×éÖĞµÄÏÂ±ê
+    int *displayIndex = new int[totalLength]; // è®°å½•è¦è¾“å‡ºçš„å­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„ä¸­çš„ä¸‹æ ‡
     for (int i = 0; i < totalLength; i++) {
         displayIndex[i] = 0;
-//        cout << "¶Áµ½µÄ×Ö¶ÎÃûÎª----------" << segmentName[i] << "---------\n";
+//        cout << "è¯»åˆ°çš„å­—æ®µåä¸º----------" << segmentName[i] << "---------\n";
     }
     for (int i = 0; i < totalLength * 20; ++i) {
         cout << "+";
@@ -135,7 +137,7 @@ void OutputDisplay2(string *segmentName,
 }
 
 
-// TODO: ±íÄ£¿é
+// TODO: è¡¨æ¨¡å—
 int DisplayTables() {
     DIR *dirp;
     dirent *direntp;
@@ -144,9 +146,9 @@ int DisplayTables() {
     string tableName;
     int i = 1;
     cout << "***************************************************\n";
-    cout << "Êı¾İ¿âÖĞÏÖÔÚÓĞÈçÏÂµÄÊı¾İ±í:" << endl;
+    cout << "æ•°æ®åº“ä¸­ç°åœ¨æœ‰å¦‚ä¸‹çš„æ•°æ®è¡¨:" << endl;
     if (dirp != NULL) {
-        for (int j = 1; j <= 2; j++) { // ÏÈ½«ÎÄ¼ş¼Ğ.Óë..¶ÁÈ¡µô
+        for (int j = 1; j <= 2; j++) { // å…ˆå°†æ–‡ä»¶å¤¹.ä¸..è¯»å–æ‰
             direntp = readdir(dirp);
         }
         while (1) {
@@ -177,7 +179,7 @@ int DisplayTables() {
         }
         closedir(dirp);
         if (i == 1) {
-            cout << "Êı¾İ¿âÖĞÎŞ±í!" << endl;
+            cout << "æ•°æ®åº“ä¸­æ— è¡¨!" << endl;
             cout << "***************************************************\n";
             return 0;
         }
@@ -189,9 +191,9 @@ int DisplayTables() {
 
 struct Table *ReadTable(string tableName) {
     string filePath = "..\\databaseTables\\" + tableName + ".csv";
-//    cout << "ÎÄ¼şÂ·¾¶ÊÇ*********" << filePath << "*******\n";
+//    cout << "æ–‡ä»¶è·¯å¾„æ˜¯*********" << filePath << "*******\n";
     if (access(filePath.c_str(), 0) != 0) {
-        cout << "ÄúÊäÈëµÄ±í²»´æÔÚ£¡\n";
+        cout << "æ‚¨è¾“å…¥çš„è¡¨ä¸å­˜åœ¨ï¼\n";
         struct Table *table = NULL;
         return table;
     } else {
@@ -199,14 +201,14 @@ struct Table *ReadTable(string tableName) {
         struct Table *table = new Table;
         int i;
         if (!fp.is_open()) {
-            cout << "¶ÁÈ¡±íÊı¾İÊ±·¢Éú´íÎó£¬ÇëÉÔºóÖØÊÔ\n";
+            cout << "è¯»å–è¡¨æ•°æ®æ—¶å‘ç”Ÿé”™è¯¯ï¼Œè¯·ç¨åé‡è¯•\n";
             table = NULL;
-        } else { // ±íÄÚÈİ¸ñÊ½£º×Ö¶ÎÊı¡¢×Ö¶ÎÀàĞÍ¡¢×Ö¶ÎË³Ğò¡¢×Ö¶ÎÃû×Ö¡¢Êı¾İÄÚÈİ
-            string line; // ¶ÁÈ¡csvÎÄ¼şÃ¿Ò»ĞĞ
-            string field; // ¶ÁÈ¡ÓÃ','¸ô¿ªµÄÃ¿Ò»Ïî
-            getline(fp, line); // ¶ÁÈ¡×Ö¶ÎÊı
+        } else { // è¡¨å†…å®¹æ ¼å¼ï¼šå­—æ®µæ•°ã€å­—æ®µç±»å‹ã€å­—æ®µé¡ºåºã€å­—æ®µåå­—ã€æ•°æ®å†…å®¹
+            string line; // è¯»å–csvæ–‡ä»¶æ¯ä¸€è¡Œ
+            string field; // è¯»å–ç”¨','éš”å¼€çš„æ¯ä¸€é¡¹
+            getline(fp, line); // è¯»å–å­—æ®µæ•°
             int segmentNum = String2Int(line);
-            string *segmentType = new string[segmentNum]; // ¶ÁÈ¡×Ö¶ÎÀàĞÍ
+            string *segmentType = new string[segmentNum]; // è¯»å–å­—æ®µç±»å‹
             getline(fp, line);
             istringstream sin(line);
             i = 0;
@@ -214,25 +216,25 @@ struct Table *ReadTable(string tableName) {
                 segmentType[i++] = field;
             }
             for (int i = 0; i < segmentNum; ++i) {
-//                cout << "¶ÁÈëµÄ×Ö¶ÎÀàĞÍÎª********" << segmentType[i] << "*******\n";
+//                cout << "è¯»å…¥çš„å­—æ®µç±»å‹ä¸º********" << segmentType[i] << "*******\n";
             }
-            int *typeArray = new int[segmentNum]; // ¶ÁÈ¡×Ö¶ÎË³Ğò
+            int *typeArray = new int[segmentNum]; // è¯»å–å­—æ®µé¡ºåº
             getline(fp, line);
-//            cout << "~~~~~~~~¶Áµ½µÄÒ»ĞĞÊÇ:" << line << endl;
+//            cout << "~~~~~~~~è¯»åˆ°çš„ä¸€è¡Œæ˜¯:" << line << endl;
             istringstream sin1(line);
             i = 0;
             while (getline(sin1, field, ',')) {
-//                cout << "+++++++¶ÁÈëµÄÖµÊÇ" << field << endl;
+//                cout << "+++++++è¯»å…¥çš„å€¼æ˜¯" << field << endl;
                 typeArray[i++] = String2Int(field);
             }
             for (int j = 0; j < segmentNum; ++j) {
-//                cout << "--------typeArray[" << j << "]ÊÇ" << typeArray[j] << endl;
+//                cout << "--------typeArray[" << j << "]æ˜¯" << typeArray[j] << endl;
             }
-            int *display = new int[segmentNum]; // ÉèÖÃÏÔÊ¾Êı×é£¬È«²¿³õÊ¼»¯Îª1£¬´ú±íÈ«²¿ÏÔÊ¾
+            int *display = new int[segmentNum]; // è®¾ç½®æ˜¾ç¤ºæ•°ç»„ï¼Œå…¨éƒ¨åˆå§‹åŒ–ä¸º1ï¼Œä»£è¡¨å…¨éƒ¨æ˜¾ç¤º
             for (int i = 0; i < segmentNum; ++i) {
                 display[i] = 1;
             }
-            string *segmentName = new string[segmentNum]; // ¶ÁÈ¡×Ö¶ÎÃû×Ö
+            string *segmentName = new string[segmentNum]; // è¯»å–å­—æ®µåå­—
             getline(fp, line);
             istringstream sin2(line);
             i = 0;
@@ -240,16 +242,16 @@ struct Table *ReadTable(string tableName) {
                 segmentName[i++] = field;
             }
             for (int i = 0; i < segmentNum; ++i) {
-//                cout << "¶ÁÈëµÄ×Ö¶ÎÃûÎª********" << segmentName[i] << "*******\n";
+//                cout << "è¯»å…¥çš„å­—æ®µåä¸º********" << segmentName[i] << "*******\n";
             }
             struct Node *dataHead = new Node;
             struct Node *tempHead = new Node;
             tempHead->next = dataHead;
-            while (getline(fp, line)) { // ÖğĞĞ¶ÁÈ¡Êı¾İÌõ
-//                cout << "%%%%%%%%%%%%%%¶ÁÈ¡µ½µÄÊı¾İÌõÎª:" << line << endl;
+            while (getline(fp, line)) { // é€è¡Œè¯»å–æ•°æ®æ¡
+//                cout << "%%%%%%%%%%%%%%è¯»å–åˆ°çš„æ•°æ®æ¡ä¸º:" << line << endl;
                 struct Node *tempNode = new Node;
                 int num_int = 0, num_double = 0, num_string = 0;
-                for (int i = 0; i < segmentNum; ++i) { // ¶ÔÓÚÃ¿¸ö×Ö¶Î£¬¸ù¾İ×Ö¶ÎÀàĞÍÀ´½øĞĞ¸³Öµ
+                for (int i = 0; i < segmentNum; ++i) { // å¯¹äºæ¯ä¸ªå­—æ®µï¼Œæ ¹æ®å­—æ®µç±»å‹æ¥è¿›è¡Œèµ‹å€¼
                     if (typeArray[i] == 0) {
                         num_int++;
                     } else if (typeArray[i] == 1) {
@@ -276,11 +278,11 @@ struct Table *ReadTable(string tableName) {
                 } else {
                     tempNode->stringArray = NULL;
                 }
-//                cout << "ÄãºÃ\n";
-                vector<string> content; // ¶ÁÈ¡Ò»ĞĞÄÚÈİ
+//                cout << "ä½ å¥½\n";
+                vector<string> content; // è¯»å–ä¸€è¡Œå†…å®¹
                 istringstream sin3(line);
                 while (getline(sin3, field, ',')) {
-//                    cout << "&&&&&&&&¶Áµ½µÄÖµÎª" << field << endl;
+//                    cout << "&&&&&&&&è¯»åˆ°çš„å€¼ä¸º" << field << endl;
                     content.push_back(field);
                 }
                 for (int i = 0; i < segmentNum; ++i) {
@@ -323,14 +325,14 @@ struct Table *ReadTable(string tableName) {
 
 int StoreTable(struct Table *table) {
     string filePath = "..\\databaseTables\\" + table->tableName + ".csv";
-    ofstream fp(filePath);// ´ò¿ª¿É¶ÁĞ´ÎÄ¼ş£¬ÈôÓĞÄÚÈİÔòÇå³ıÄÚÈİ
+    ofstream fp(filePath);// æ‰“å¼€å¯è¯»å†™æ–‡ä»¶ï¼Œè‹¥æœ‰å†…å®¹åˆ™æ¸…é™¤å†…å®¹
     if (fp.bad()) {
-        cout << "´´½¨" << table->tableName << "ÎÄ¼ş·¢Éú´íÎó£¬´æ´¢Ê§°Ü£¬ÇëÉÔºóÖØÊÔ\n";
+        cout << "åˆ›å»º" << table->tableName << "æ–‡ä»¶å‘ç”Ÿé”™è¯¯ï¼Œå­˜å‚¨å¤±è´¥ï¼Œè¯·ç¨åé‡è¯•\n";
         return 0;
     } else {
         int segmentNum = table->segmentNum;
         fp << segmentNum << endl;
-        for (int i = 0; i < segmentNum; ++i) { // ´æ´¢×Ö¶ÎÀàĞÍ£¬Îª×Ö·û´®
+        for (int i = 0; i < segmentNum; ++i) { // å­˜å‚¨å­—æ®µç±»å‹ï¼Œä¸ºå­—ç¬¦ä¸²
             fp << table->segmentType[i];
             if (i != segmentNum - 1) {
                 fp << ",";
@@ -338,7 +340,7 @@ int StoreTable(struct Table *table) {
                 fp << endl;
             }
         }
-        for (int i = 0; i < segmentNum; ++i) { // ´æ´¢typeArray£¬ÓÃint±êÊ¶×Ö¶ÎµÄÊı¾İÀàĞÍ
+        for (int i = 0; i < segmentNum; ++i) { // å­˜å‚¨typeArrayï¼Œç”¨intæ ‡è¯†å­—æ®µçš„æ•°æ®ç±»å‹
             fp << table->typeArray[i];
             if (i != segmentNum - 1) {
                 fp << ",";
@@ -346,7 +348,7 @@ int StoreTable(struct Table *table) {
                 fp << endl;
             }
         }
-        for (int i = 0; i < segmentNum; ++i) { // ´æ´¢×Ö¶ÎÃû×Ö
+        for (int i = 0; i < segmentNum; ++i) { // å­˜å‚¨å­—æ®µåå­—
             fp << table->segmentName[i];
             if (i != segmentNum - 1) {
                 fp << ",";
@@ -355,10 +357,10 @@ int StoreTable(struct Table *table) {
             }
         }
         struct Node *tempNode = table->nodeHead;
-        int *indexInType = new int[segmentNum]; // ¼ÇÂ¼Ã¿¸ö×Ö¶ÎÔÚ¶ÔÓ¦ÀàĞÍµÄÊı×éÖĞµÄÏÂ±ê
+        int *indexInType = new int[segmentNum]; // è®°å½•æ¯ä¸ªå­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„ä¸­çš„ä¸‹æ ‡
         if (tempNode != NULL) {
             int num_int = 0, num_double = 0, num_string = 0;
-            for (int i = 0; i < segmentNum; ++i) { // Éú³ÉÃ¿¸ö×Ö¶ÎÔÚ¶ÔÓ¦ÀàĞÍµÄÊı×éÖĞµÄÏÂ±ê
+            for (int i = 0; i < segmentNum; ++i) { // ç”Ÿæˆæ¯ä¸ªå­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„ä¸­çš„ä¸‹æ ‡
                 if (table->typeArray[i] == 0) {
                     indexInType[i] = num_int++;
                 } else if (table->typeArray[i] == 1) {
@@ -368,7 +370,7 @@ int StoreTable(struct Table *table) {
                 }
             }
         }
-        while (tempNode != NULL) { // Ğ´ÈëÊı¾İÌõ
+        while (tempNode != NULL) { // å†™å…¥æ•°æ®æ¡
             for (int i = 0; i < segmentNum; ++i) {
                 int index = indexInType[i];
                 if (table->typeArray[i] == 0) {
@@ -393,27 +395,27 @@ int CreateTable() {
     int flag = 0;
     string tableName;
     while (flag == 0) {
-        cout << "ÇëÊäÈëÄúÒªĞÂ½¨µÄ±íµÄ±íÃû:";
+        cout << "è¯·è¾“å…¥æ‚¨è¦æ–°å»ºçš„è¡¨çš„è¡¨å:";
         cin >> tableName;
         while (CorrectString(tableName) != 1) {
             cin >> tableName;
         }
         string filePath = "..\\databaseTables\\" + tableName + ".csv";
-        if (access(filePath.c_str(), 0) != 0) { // ËµÃ÷¸Ã±í²»´æÔÚ£¬¿ÉÒÔ´´½¨
+        if (access(filePath.c_str(), 0) != 0) { // è¯´æ˜è¯¥è¡¨ä¸å­˜åœ¨ï¼Œå¯ä»¥åˆ›å»º
             flag = 1;
         } else {
-            cout << "¸Ã±íÒÑ´æÔÚ£¡ÊÇ·ñÒª¸²¸Ç¸Ã±í£¬ÊäÈëYÒÔ¸²¸Ç£¬ÊäÈëN²»¸²¸Ç:";
+            cout << "è¯¥è¡¨å·²å­˜åœ¨ï¼æ˜¯å¦è¦è¦†ç›–è¯¥è¡¨ï¼Œè¾“å…¥Yä»¥è¦†ç›–ï¼Œè¾“å…¥Nä¸è¦†ç›–:";
             char confirm;
             string confirmText;
             cin >> confirmText;
             while (1) {
                 if (CorrectChar(confirmText) != 1) {
-                    cout << "ÄúÊäÈëµÄÑ¡Ïî²»´æÔÚ£¬ÇëÖØĞÂÊäÈë:";
+                    cout << "æ‚¨è¾“å…¥çš„é€‰é¡¹ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥:";
                     cin >> confirmText;
                 } else {
                     confirm = String2Char(confirmText);
                     if (confirm != 'Y' && confirm != 'y' && confirm != 'N' && confirm != 'n') {
-                        cout << "ÄúÊäÈëµÄÑ¡Ïî²»´æÔÚ£¬ÇëÖØĞÂÊäÈë:";
+                        cout << "æ‚¨è¾“å…¥çš„é€‰é¡¹ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥:";
                         cin >> confirmText;
                     } else {
                         break;
@@ -425,11 +427,11 @@ int CreateTable() {
             }
         }
     }
-    cout << "ÇëÊäÈë¸Ã±íÖĞÓĞ¶àÉÙ¸ö×Ö¶Î:";
+    cout << "è¯·è¾“å…¥è¯¥è¡¨ä¸­æœ‰å¤šå°‘ä¸ªå­—æ®µ:";
     string numInString;
     cin >> numInString;
     while (CorrectInt(numInString) != 1) {
-        cout << "ÄúÊäÈëµÄÊı×Ö²»·ûºÏÒªÇó£¬ÇëÖØĞÂÊäÈë:";
+        cout << "æ‚¨è¾“å…¥çš„æ•°å­—ä¸ç¬¦åˆè¦æ±‚ï¼Œè¯·é‡æ–°è¾“å…¥:";
         cin >> numInString;
     }
     int segmentNum = String2Int(numInString);
@@ -437,7 +439,7 @@ int CreateTable() {
     int *typeArray = new int[segmentNum];
     string *segmentName = new string[segmentNum];
     for (int i = 0; i < segmentNum; ++i) {
-        cout << "ÇëÊäÈëµÚ" << i + 1 << "¸ö×Ö¶ÎµÄÊı¾İÀàĞÍ(int, double»òÕßstring):";
+        cout << "è¯·è¾“å…¥ç¬¬" << i + 1 << "ä¸ªå­—æ®µçš„æ•°æ®ç±»å‹(int, doubleæˆ–è€…string):";
         string type;
         cin >> type;
         int isFine = 0;
@@ -456,16 +458,16 @@ int CreateTable() {
             typeArray[i] = 2;
             isFine = 1;
         } else {
-            cout << "ÄúÊäÈëµÄÀàĞÍ²»´æÔÚ£¬ÇëÖØĞÂÊäÈë\n";
+            cout << "æ‚¨è¾“å…¥çš„ç±»å‹ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥\n";
             i--;
         }
         if (isFine == 1) {
 //            cout << "****" << segmentType[i] << "****\n";
-            cout << "ÇëÊäÈë¸Ã×Ö¶ÎµÄÃû×Ö:";
+            cout << "è¯·è¾“å…¥è¯¥å­—æ®µçš„åå­—:";
             string name;
             cin >> name;
             while (CorrectString(name) != 1) {
-                cout << "ÄúÊäÈëµÄÃû×Ö²»ºÏ¹æ£¬ÇëÖØĞÂÊäÈë:";
+                cout << "æ‚¨è¾“å…¥çš„åå­—ä¸åˆè§„ï¼Œè¯·é‡æ–°è¾“å…¥:";
                 cin >> name;
             }
             segmentName[i] = name;
@@ -482,10 +484,10 @@ int CreateTable() {
     table->displayArray = NULL;
     int storeSuccess = StoreTable(table);
     if (storeSuccess == 1) {
-        cout << "ĞÂ½¨±í³É¹¦!\n";
+        cout << "æ–°å»ºè¡¨æˆåŠŸ!\n";
         return 1;
     } else {
-        cout << "±§Ç¸£¬³öÁËÒ»Ğ©ÎÊÌâ£¬ĞÂ½¨Ê§°Ü£¬ÇëÉÔºóÖØÊÔ.\n";
+        cout << "æŠ±æ­‰ï¼Œå‡ºäº†ä¸€äº›é—®é¢˜ï¼Œæ–°å»ºå¤±è´¥ï¼Œè¯·ç¨åé‡è¯•.\n";
         return 0;
     }
 }
@@ -495,60 +497,60 @@ int ChangeTable(int num) {
     string tableName, segmentName, segmentNewName;
     string oldPath;
     struct Table *table;
-//    // ÏÈÕ¹Ê¾±íÄ¿Â¼
+//    // å…ˆå±•ç¤ºè¡¨ç›®å½•
 //    DisplayTables();
-    cout << "ÇëÊäÈëÒªĞŞ¸ÄµÄ±íÃû£¬ÊäÈë-1ÒÔ½áÊø:";
+    cout << "è¯·è¾“å…¥è¦ä¿®æ”¹çš„è¡¨åï¼Œè¾“å…¥-1ä»¥ç»“æŸ:";
     cin >> tableName;
-    // ÅĞ¶ÏÊäÈëµÄ±íÃûÊÇ·ñ´æÔÚ£¨ÂÖÑ¯£©
+    // åˆ¤æ–­è¾“å…¥çš„è¡¨åæ˜¯å¦å­˜åœ¨ï¼ˆè½®è¯¢ï¼‰
     while (!(table = ReadTable(tableName))) {
         if (tableName == "-1") {
             return 0;
         }
-        cout << "ÇëÖØĞÂÊäÈëÒªĞŞ¸ÄµÄ±íÃû£º";
+        cout << "è¯·é‡æ–°è¾“å…¥è¦ä¿®æ”¹çš„è¡¨åï¼š";
         cin >> tableName;
     }
     oldPath = string(path) + tableName + ".csv";
-    // ĞŞ¸Ä±íÃû
+    // ä¿®æ”¹è¡¨å
     if (num == 0) {
-        cout << "ÇëÊäÈëĞÂ±íÃû£º";
+        cout << "è¯·è¾“å…¥æ–°è¡¨åï¼š";
         cin >> table->tableName;
         //
         string newPath = string(path) + table->tableName + ".csv";
         if (rename(oldPath.c_str(), newPath.c_str()) == 0) {
-            cout << "±íÃûĞŞ¸Ä³É¹¦£¡" << endl;
+            cout << "è¡¨åä¿®æ”¹æˆåŠŸï¼" << endl;
             DisplayTables();
         } else
-            cout << "±íÃûĞŞ¸ÄÊ§°Ü£¡" << endl;
+            cout << "è¡¨åä¿®æ”¹å¤±è´¥ï¼" << endl;
     }
-        // ĞŞ¸Ä×Ö¶ÎÃû
+        // ä¿®æ”¹å­—æ®µå
     else if (num == 1) {
         if (table) {
-            // Õ¹Ê¾ËùÓĞ×Ö¶Î
-            cout << tableName << "±íµÄËùÓĞ×Ö¶Î£º";
+            // å±•ç¤ºæ‰€æœ‰å­—æ®µ
+            cout << tableName << "è¡¨çš„æ‰€æœ‰å­—æ®µï¼š";
             for (int i = 0; i < table->segmentNum; ++i) {
                 cout << std::left << setw(10) << table->segmentName[i];
             }
             cout << endl;
 
-            // ÂÖÑ¯ÊÇ·ñ¼ÌĞøĞŞ¸Ä×Ö¶ÎÃû
+            // è½®è¯¢æ˜¯å¦ç»§ç»­ä¿®æ”¹å­—æ®µå
             while (1) {
-                cout << "ÇëÊäÈëÒªĞŞ¸ÄµÄ×Ö¶Î£º";
+                cout << "è¯·è¾“å…¥è¦ä¿®æ”¹çš„å­—æ®µï¼š";
                 cin >> segmentName;
                 int segmentFound = 0;
-                // Æ¥Åä×Ö¶ÎÃû
+                // åŒ¹é…å­—æ®µå
                 for (int i = 0; i < table->segmentNum; ++i) {
                     if (segmentName == table->segmentName[i]) {
                         segmentFound = 1;
-                        cout << "ÇëÊäÈëĞÂ×Ö¶ÎÃû£º";
+                        cout << "è¯·è¾“å…¥æ–°å­—æ®µåï¼š";
                         cin >> table->segmentName[i];
                     }
                 }
                 if (segmentFound == 0) {
-                    cout << "×Ö¶Î²»´æÔÚ£¬Çë¼ì²é×Ö¶ÎÃûÊäÈëÊÇ·ñÕıÈ·£¡\n";
+                    cout << "å­—æ®µä¸å­˜åœ¨ï¼Œè¯·æ£€æŸ¥å­—æ®µåè¾“å…¥æ˜¯å¦æ­£ç¡®ï¼\n";
                 } else {
-                    cout << "ÊÇ·ñ¼ÌĞøĞŞ¸Ä×Ö¶ÎÃû£º\n"
-                         << "ÊäÈë 0 : ¼ÌĞøĞŞ¸Ä\n"
-                         << "ÊäÈëÆäËû : ÍË³ö\n";
+                    cout << "æ˜¯å¦ç»§ç»­ä¿®æ”¹å­—æ®µåï¼š\n"
+                         << "è¾“å…¥ 0 : ç»§ç»­ä¿®æ”¹\n"
+                         << "è¾“å…¥å…¶ä»– : é€€å‡º\n";
                     string str;
                     cin >> str;
                     if (str != "0") {
@@ -556,18 +558,18 @@ int ChangeTable(int num) {
                     }
                 }
             }
-            // ÅĞ¶Ï±í´æ´¢ÊÇ·ñ³É¹¦
+            // åˆ¤æ–­è¡¨å­˜å‚¨æ˜¯å¦æˆåŠŸ
             if (StoreTable(table) && remove(oldPath.c_str()) == 0) {
-                cout << "×Ö¶ÎĞŞ¸Ä³É¹¦£¡\n";
+                cout << "å­—æ®µä¿®æ”¹æˆåŠŸï¼\n";
                 table = ReadTable(tableName);
-                cout << tableName << " ±íµÄËùÓĞ×Ö¶Î£º";
+                cout << tableName << " è¡¨çš„æ‰€æœ‰å­—æ®µï¼š";
                 for (int i = 0; i < table->segmentNum; ++i) {
                     cout << std::left << setw(10) << table->segmentName[i];
                 }
                 cout << endl;
                 return 1;
             } else {
-                cout << "×Ö¶ÎĞŞ¸ÄÊ§°Ü£¡\n";
+                cout << "å­—æ®µä¿®æ”¹å¤±è´¥ï¼\n";
                 return 0;
             }
         }
@@ -576,40 +578,40 @@ int ChangeTable(int num) {
 }
 
 int DeleteTable(string tableName) {
-    // Æ´½ÓÂ·¾¶
+    // æ‹¼æ¥è·¯å¾„
     string filePath = string(path) + tableName + ".csv";
 
-    // ÅĞ¶Ï±íÃûÊÇ·ñ´æÔÚ£¨ÂÖÑ¯£©
+    // åˆ¤æ–­è¡¨åæ˜¯å¦å­˜åœ¨ï¼ˆè½®è¯¢ï¼‰
     while (access(filePath.c_str(), 0) != 0) {
-        cout << "ÄúÊäÈëµÄ±í²»´æÔÚ£¡\n";
-        cout << "ÇëÖØĞÂÊäÈëÒªÉ¾³ıµÄ±íÃû£º";
+        cout << "æ‚¨è¾“å…¥çš„è¡¨ä¸å­˜åœ¨ï¼\n";
+        cout << "è¯·é‡æ–°è¾“å…¥è¦åˆ é™¤çš„è¡¨åï¼š";
         cin >> tableName;
     }
 
-    // ÅĞ¶ÏÉ¾³ıÎÄ¼şÊÇ·ñ³É¹¦
+    // åˆ¤æ–­åˆ é™¤æ–‡ä»¶æ˜¯å¦æˆåŠŸ
     if (remove(filePath.c_str()) == 0) {
-        cout << "±íÉ¾³ı³É¹¦£¡\n";
+        cout << "è¡¨åˆ é™¤æˆåŠŸï¼\n";
         DisplayTables();
         return 1;
     } else {
-        cout << "±íÉ¾³ıÊ§°Ü£¡\n";
+        cout << "è¡¨åˆ é™¤å¤±è´¥ï¼\n";
         return 0;
     }
 }
 
-// TODO: Êı¾İÄ£¿é
+// TODO: æ•°æ®æ¨¡å—
 
 void InsertData(string tableName) {
     struct Table *table;
-    // ÂÖÑ¯¼ì²é±íÊÇ·ñ´æÔÚ
+    // è½®è¯¢æ£€æŸ¥è¡¨æ˜¯å¦å­˜åœ¨
     while (!(table = ReadTable(tableName))) {
-        cout << "ÄúÊäÈëµÄ±í²»´æÔÚ£¡\n";
-        cout << "ÇëÖØĞÂÊäÈëÒªĞŞ¸ÄµÄ±íÃû£º";
+        cout << "æ‚¨è¾“å…¥çš„è¡¨ä¸å­˜åœ¨ï¼\n";
+        cout << "è¯·é‡æ–°è¾“å…¥è¦ä¿®æ”¹çš„è¡¨åï¼š";
         cin >> tableName;
     }
     struct Node *temp = table->nodeHead;
 
-    // Õ¹Ê¾ËùÓĞ×Ö¶ÎÃû¼°ÆäÀàĞÍ
+    // å±•ç¤ºæ‰€æœ‰å­—æ®µååŠå…¶ç±»å‹
     int segmentNum = table->segmentNum;
     for (int i = 0; i < segmentNum; i++) {
         cout << table->segmentName[i] << "(" << table->segmentType[i] << ")\t";
@@ -623,19 +625,19 @@ void InsertData(string tableName) {
     while (1) {
         intNum = 0, doubleNum = 0, stringNum = 0;
         for (int i = 0; i < segmentNum; ++i) {
-            // ÂÖÑ¯ÊäÈë×Ö¶ÎÄÚÈİ
+            // è½®è¯¢è¾“å…¥å­—æ®µå†…å®¹
             while (1) {
-                cout << "ÇëÊäÈëµÚ" << i + 1 << "¸ö×Ö¶ÎµÄÄÚÈİ:";
+                cout << "è¯·è¾“å…¥ç¬¬" << i + 1 << "ä¸ªå­—æ®µçš„å†…å®¹:";
                 cin >> dataString[i];
-//                cout << "*************µÚ" << i << "¸ö×Ö¶ÎµÄtypeÊÇ" << table->typeArray[i] << endl;
-//                cout << "*************ÄúÊäÈëµÄÊÇ:" << dataString[i] << endl;
+//                cout << "*************ç¬¬" << i << "ä¸ªå­—æ®µçš„typeæ˜¯" << table->typeArray[i] << endl;
+//                cout << "*************æ‚¨è¾“å…¥çš„æ˜¯:" << dataString[i] << endl;
                 if (table->typeArray[i] == 0) {
                     if (CorrectInt(dataString[i])) {
                         dataInt[i] = String2Int(dataString[i]);
                         intNum++;
                         break;
                     } else {
-                        cout << "ÊäÈëµÄÀàĞÍ·Ç·¨£¬ÇëÊäÈëintÀàĞÍ£¡";
+                        cout << "è¾“å…¥çš„ç±»å‹éæ³•ï¼Œè¯·è¾“å…¥intç±»å‹ï¼";
                     }
                 } else if (table->typeArray[i] == 1) {
                     if (CorrectDouble(dataString[i])) {
@@ -643,14 +645,14 @@ void InsertData(string tableName) {
                         doubleNum++;
                         break;
                     } else {
-                        cout << "ÊäÈëµÄÀàĞÍ·Ç·¨£¬ÇëÊäÈëdoubleÀàĞÍ£¡";
+                        cout << "è¾“å…¥çš„ç±»å‹éæ³•ï¼Œè¯·è¾“å…¥doubleç±»å‹ï¼";
                     }
                 } else {
                     if (CorrectString(dataString[i])) {
                         stringNum++;
                         break;
                     } else {
-                        cout << "ÊäÈëµÄÀàĞÍ·Ç·¨£¬ÇëÊäÈëstringÀàĞÍ£¡";
+                        cout << "è¾“å…¥çš„ç±»å‹éæ³•ï¼Œè¯·è¾“å…¥stringç±»å‹ï¼";
                     }
                 }
             }
@@ -706,9 +708,9 @@ void InsertData(string tableName) {
             temp->next = node;
         }
 
-        cout << "ÊÇ·ñ¼ÌĞøÔö¼ÓÊı¾İ£º\n"
-             << "ÊäÈë 0 : ¼ÌĞøÔö¼Ó\n"
-             << "ÊäÈëÆäËû : ÍË³ö\n";
+        cout << "æ˜¯å¦ç»§ç»­å¢åŠ æ•°æ®ï¼š\n"
+             << "è¾“å…¥ 0 : ç»§ç»­å¢åŠ \n"
+             << "è¾“å…¥å…¶ä»– : é€€å‡º\n";
         string str;
         cin >> str;
         if (str != "0") {
@@ -717,20 +719,20 @@ void InsertData(string tableName) {
     }
 
     if (StoreTable(table)) {
-        cout << "Êı¾İÔö¼Ó³É¹¦£¡\n";
+        cout << "æ•°æ®å¢åŠ æˆåŠŸï¼\n";
     } else {
-        cout << "Êı¾İÔö¼ÓÊ§°Ü!\n";
+        cout << "æ•°æ®å¢åŠ å¤±è´¥!\n";
     }
 }
 
 void EditData(string tableName) {
     struct Table *table = ReadTable(tableName);
     int len = table->segmentNum;
-    int *resIndex = InfoData(1, table);//ÏÈ²éÑ¯Êı¾İ
-    /*¼ÇÂ¼×Ö¶ÎÔÚ¶ÔÓ¦ÀàĞÍµÄÊı×éÖĞµÄÏÂ±ê*/
-    int totalLength = table->segmentNum; // È¡µÃ×Ö¶Î×Ü¸öÊı
-    int num_int = 0, num_double = 0, num_string = 0;//·Ö±ğ´ú±íÔÚintArrayµÄÏÂ±ê£¬ÔÚdoubleArrayÖĞµÄÏÂ±ê£¬ÔÚstringArrayµÄÏÂ±ê
-    int *displayIndex = new int[totalLength]; // ¼ÇÂ¼×Ö¶ÎÔÚ¶ÔÓ¦ÀàĞÍµÄÊı×éÖĞµÄÏÂ±êµÄÊı×é
+    int *resIndex = InfoData(1, table);//å…ˆæŸ¥è¯¢æ•°æ®
+    /*è®°å½•å­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„ä¸­çš„ä¸‹æ ‡*/
+    int totalLength = table->segmentNum; // å–å¾—å­—æ®µæ€»ä¸ªæ•°
+    int num_int = 0, num_double = 0, num_string = 0;//åˆ†åˆ«ä»£è¡¨åœ¨intArrayçš„ä¸‹æ ‡ï¼Œåœ¨doubleArrayä¸­çš„ä¸‹æ ‡ï¼Œåœ¨stringArrayçš„ä¸‹æ ‡
+    int *displayIndex = new int[totalLength]; // è®°å½•å­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„ä¸­çš„ä¸‹æ ‡çš„æ•°ç»„
     for (int i = 0; i < totalLength; i++) {
         displayIndex[i] = 0;
     }
@@ -749,26 +751,26 @@ void EditData(string tableName) {
     }
     if (resIndex != nullptr) {
         int okNum = _msize(resIndex) / sizeof(int);
-        cout << "--------------ÒÔÉÏÊÇ·ûºÏÌõ¼şµÄÊı¾İ,Äú½«»áĞŞ¸ÄÕâĞ©Êı¾İ------------" << endl;
+        cout << "--------------ä»¥ä¸Šæ˜¯ç¬¦åˆæ¡ä»¶çš„æ•°æ®,æ‚¨å°†ä¼šä¿®æ”¹è¿™äº›æ•°æ®------------" << endl;
         while (1) {
-            /*Êä³öÌáÊ¾Óï*/
-            cout << "±íÓĞÈçÏÂ×Ö¶Î£º\n";
+            /*è¾“å‡ºæç¤ºè¯­*/
+            cout << "è¡¨æœ‰å¦‚ä¸‹å­—æ®µï¼š\n";
             for (int i = 0; i < len; ++i) {
                 cout << i + 1 << ". " << table->segmentName[i] << " ";
             }
-            cout << "\nÇëÊäÈëĞŞ¸Ä×Ö¶ÎµÄ±àºÅ,ÊäÈë0·µ»Ø\n";
+            cout << "\nè¯·è¾“å…¥ä¿®æ”¹å­—æ®µçš„ç¼–å·,è¾“å…¥0è¿”å›\n";
 
-            /*»ñÈ¡ÓÃ»§ÊäÈëµÄ±àºÅ*/
+            /*è·å–ç”¨æˆ·è¾“å…¥çš„ç¼–å·*/
             struct Node *p = table->nodeHead;
             int count = 0;
             int nextcount = 0;
             int index;
             string indexRes;
             cin >> indexRes;
-            int indexFlag = CorrectInt(indexRes);//ºÏ·¨ĞÔ¼ìÑé
+            int indexFlag = CorrectInt(indexRes);//åˆæ³•æ€§æ£€éªŒ
 
 
-            if (indexFlag) {//ÕâÀïÃæÊäÈëitem
+            if (indexFlag) {//è¿™é‡Œé¢è¾“å…¥item
                 index = String2Int(indexRes);
                 if (index == 0) {
                     return;
@@ -778,18 +780,18 @@ void EditData(string tableName) {
                     int type = table->typeArray[index - 1];
                     int itemFlag = -1;
 
-                    if (type == 0) {//Èç¹û×Ö¶ÎÀàĞÍÊÇint
+                    if (type == 0) {//å¦‚æœå­—æ®µç±»å‹æ˜¯int
 
-                        /*±àºÅ¾­¹ıºÏ·¨ĞÔ¼ìÑéÖ®ºó£¬»ñÈ¡ÓÃ»§ÊäÈëµÄ×Ö¶ÎÄÚÈİ*/
-                        cout << "ÇëÊäÈë¸Ã×Ö¶ÎĞŞ¸ÄºóµÄÖµ\n";
+                        /*ç¼–å·ç»è¿‡åˆæ³•æ€§æ£€éªŒä¹‹åï¼Œè·å–ç”¨æˆ·è¾“å…¥çš„å­—æ®µå†…å®¹*/
+                        cout << "è¯·è¾“å…¥è¯¥å­—æ®µä¿®æ”¹åçš„å€¼\n";
                         string itemRes;
                         cin >> itemRes;
-                        itemFlag = CorrectInt(itemRes);//ÄÚÈİµÄºÏ·¨ĞÔ¼ìÑé
+                        itemFlag = CorrectInt(itemRes);//å†…å®¹çš„åˆæ³•æ€§æ£€éªŒ
 
-                        /*ÄÚÈİ¾­¹ıºÏ·¨ĞÔ¼ìÑéÖ®ºó£¬½øĞĞĞŞ¸Ä*/
+                        /*å†…å®¹ç»è¿‡åˆæ³•æ€§æ£€éªŒä¹‹åï¼Œè¿›è¡Œä¿®æ”¹*/
                         if (itemFlag == 1) {
                             int targetInt = String2Int(itemRes);
-                            /*±éÀúÊı¾İ±í*/
+                            /*éå†æ•°æ®è¡¨*/
                             while (p != NULL && nextcount <= okNum) {
                                 if (count == resIndex[nextcount]) {
                                     p->intArray[displayIndex[index - 1]] = targetInt;
@@ -799,27 +801,27 @@ void EditData(string tableName) {
                                 count++;
                             }
 
-                            //Õ¹Ê¾ĞŞ¸Ä½á¹û
+                            //å±•ç¤ºä¿®æ”¹ç»“æœ
                             OutputDisplay(table->segmentName, table->displayArray, table->nodeHead, table->typeArray,
                                           table->segmentNum);
 
                         } else {
-                            cout << "ÄÚÈİÓĞÎó£¬ÇëÖØĞÂÊäÈë\n";
+                            cout << "å†…å®¹æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
                         }
                     }
-                    if (type == 1) {//Èç¹û×Ö¶ÎÀàĞÍÊÇdouble
+                    if (type == 1) {//å¦‚æœå­—æ®µç±»å‹æ˜¯double
 
-                        /*±àºÅ¾­¹ıºÏ·¨ĞÔ¼ìÑéÖ®ºó£¬»ñÈ¡ÓÃ»§ÊäÈëµÄ×Ö¶ÎÄÚÈİ*/
-                        cout << "ÇëÊäÈë¸Ã×Ö¶ÎĞŞ¸ÄºóµÄÖµ\n";
+                        /*ç¼–å·ç»è¿‡åˆæ³•æ€§æ£€éªŒä¹‹åï¼Œè·å–ç”¨æˆ·è¾“å…¥çš„å­—æ®µå†…å®¹*/
+                        cout << "è¯·è¾“å…¥è¯¥å­—æ®µä¿®æ”¹åçš„å€¼\n";
                         string itemRes;
                         cin >> itemRes;
-                        itemFlag = CorrectDouble(itemRes);//ÄÚÈİµÄºÏ·¨ĞÔ¼ìÑé
+                        itemFlag = CorrectDouble(itemRes);//å†…å®¹çš„åˆæ³•æ€§æ£€éªŒ
 
-                        /*ÄÚÈİ¾­¹ıºÏ·¨ĞÔ¼ìÑéÖ®ºó£¬½øĞĞĞŞ¸Ä*/
-                        if (itemFlag == 1) {//ÕâÀïÃæ½øĞĞÑ°ÕÒ·ûºÏÌõ¼şµÄÖµ
+                        /*å†…å®¹ç»è¿‡åˆæ³•æ€§æ£€éªŒä¹‹åï¼Œè¿›è¡Œä¿®æ”¹*/
+                        if (itemFlag == 1) {//è¿™é‡Œé¢è¿›è¡Œå¯»æ‰¾ç¬¦åˆæ¡ä»¶çš„å€¼
                             double targetDouble = String2Double(itemRes);
 //                            cout << "$$$$$$$" << targetDouble << endl;
-                            /*±éÀúÊı¾İ±í*/
+                            /*éå†æ•°æ®è¡¨*/
                             while (p != NULL && nextcount <= okNum) {
                                 if (count == resIndex[nextcount]) {
                                     p->doubleArray[displayIndex[index - 1]] = targetDouble;
@@ -828,25 +830,25 @@ void EditData(string tableName) {
                                 p = p->next;
                                 count++;
                             }
-                            //Õ¹Ê¾ĞŞ¸Ä½á¹û
+                            //å±•ç¤ºä¿®æ”¹ç»“æœ
                             OutputDisplay(table->segmentName, table->displayArray, table->nodeHead, table->typeArray,
                                           table->segmentNum);
                         } else {
-                            cout << "ÄÚÈİÓĞÎó£¬ÇëÖØĞÂÊäÈë\n";
+                            cout << "å†…å®¹æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
                         }
                     }
-                    if (type == 2) {//Èç¹û×Ö¶ÎÀàĞÍÊÇstring
+                    if (type == 2) {//å¦‚æœå­—æ®µç±»å‹æ˜¯string
 
-                        /*±àºÅ¾­¹ıºÏ·¨ĞÔ¼ìÑéÖ®ºó£¬»ñÈ¡ÓÃ»§ÊäÈëµÄ×Ö¶ÎÄÚÈİ*/
-                        cout << "ÇëÊäÈë¸Ã×Ö¶ÎĞŞ¸ÄºóµÄÖµ\n";
+                        /*ç¼–å·ç»è¿‡åˆæ³•æ€§æ£€éªŒä¹‹åï¼Œè·å–ç”¨æˆ·è¾“å…¥çš„å­—æ®µå†…å®¹*/
+                        cout << "è¯·è¾“å…¥è¯¥å­—æ®µä¿®æ”¹åçš„å€¼\n";
                         string itemRes;
                         cin >> itemRes;
-                        itemFlag = CorrectString(itemRes);//ÄÚÈİµÄºÏ·¨ĞÔ¼ìÑé
+                        itemFlag = CorrectString(itemRes);//å†…å®¹çš„åˆæ³•æ€§æ£€éªŒ
 
-                        /*ÄÚÈİ¾­¹ıºÏ·¨ĞÔ¼ìÑéÖ®ºó£¬½øĞĞĞŞ¸Ä*/
-                        if (itemFlag == 1) {//ÕâÀïÃæ½øĞĞÑ°ÕÒ·ûºÏÌõ¼şµÄÖµ
+                        /*å†…å®¹ç»è¿‡åˆæ³•æ€§æ£€éªŒä¹‹åï¼Œè¿›è¡Œä¿®æ”¹*/
+                        if (itemFlag == 1) {//è¿™é‡Œé¢è¿›è¡Œå¯»æ‰¾ç¬¦åˆæ¡ä»¶çš„å€¼
                             string targetString = itemRes;
-                            /*±éÀúÊı¾İ±í*/
+                            /*éå†æ•°æ®è¡¨*/
                             while (p != NULL && nextcount <= okNum) {
                                 if (count == resIndex[nextcount]) {
                                     p->stringArray[displayIndex[index - 1]] = targetString;
@@ -855,24 +857,24 @@ void EditData(string tableName) {
                                 p = p->next;
                                 count++;
                             }
-                            //Õ¹Ê¾ĞŞ¸Ä½á¹û
+                            //å±•ç¤ºä¿®æ”¹ç»“æœ
                             OutputDisplay(table->segmentName, table->displayArray, table->nodeHead, table->typeArray,
                                           table->segmentNum);
                         } else {
-                            cout << "ÄÚÈİÓĞÎó£¬ÇëÖØĞÂÊäÈë\n";
+                            cout << "å†…å®¹æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
                         }
                     }
 
 
                 } else {
-                    cout << "±àºÅÓĞÎó\n";
+                    cout << "ç¼–å·æœ‰è¯¯\n";
                 }
             } else {
-                cout << "±àºÅÓĞÎó\n";
+                cout << "ç¼–å·æœ‰è¯¯\n";
             }
 
-            /*Ñ¯ÎÊÓÃ»§ÊÇ·ñ¼ÌĞøĞŞ¸Ä£¬»ñÈ¡ÓÃ»§µÄÑ¡Ôñ*/
-            cout << "ÊÇ·ñ¼ÌĞøĞŞ¸ÄÊı¾İ£¿ÊäÈë1¼ÌĞø£¬ÊäÈëÆäËûÍË³öĞŞ¸Ä\n";
+            /*è¯¢é—®ç”¨æˆ·æ˜¯å¦ç»§ç»­ä¿®æ”¹ï¼Œè·å–ç”¨æˆ·çš„é€‰æ‹©*/
+            cout << "æ˜¯å¦ç»§ç»­ä¿®æ”¹æ•°æ®ï¼Ÿè¾“å…¥1ç»§ç»­ï¼Œè¾“å…¥å…¶ä»–é€€å‡ºä¿®æ”¹\n";
             string confirmString2;
             cin >> confirmString2;
             int confirmFlag2 = CorrectInt(confirmString2);
@@ -885,7 +887,7 @@ void EditData(string tableName) {
                 break;
             }
         }
-        /*´¢´æĞŞ¸ÄºóµÄ±í*/
+        /*å‚¨å­˜ä¿®æ”¹åçš„è¡¨*/
         StoreTable(table);
     }
 }
@@ -894,18 +896,18 @@ void DeleteData(string tableName) {
     struct Table *table = ReadTable(tableName);
     while (1) {
 
-        int *resIndex = InfoData(1, table);//ÏÈ²éÑ¯Êı¾İ
+        int *resIndex = InfoData(1, table);//å…ˆæŸ¥è¯¢æ•°æ®
         if (resIndex == nullptr) {
             break;
         }
 
-        /*Êä³öÌáÊ¾£¬»ñÈ¡ÓÃ»§ÊÇ·ñÈ·ÈÏÉ¾³ı*/
-        cout << "ÊÇ·ñÈ·ÈÏÉ¾³ıÕâ¼¸ĞĞÊı¾İ£¿ÊäÈë1È·ÈÏ£¬ÊäÈëÆäËûÈ¡Ïû\n";
+        /*è¾“å‡ºæç¤ºï¼Œè·å–ç”¨æˆ·æ˜¯å¦ç¡®è®¤åˆ é™¤*/
+        cout << "æ˜¯å¦ç¡®è®¤åˆ é™¤è¿™å‡ è¡Œæ•°æ®ï¼Ÿè¾“å…¥1ç¡®è®¤ï¼Œè¾“å…¥å…¶ä»–å–æ¶ˆ\n";
         string confirmString;
         cin >> confirmString;
         int confirmFlag = CorrectInt(confirmString);
         if (confirmFlag) {
-            /*Í¨¹ıºÏ·¨ĞÔ¼ìÑéÖ®ºó£¬±éÀúÊı¾İ±í*/
+            /*é€šè¿‡åˆæ³•æ€§æ£€éªŒä¹‹åï¼Œéå†æ•°æ®è¡¨*/
             Node *trueHead = NULL;
             struct Node *p = new Node;
             p->next = table->nodeHead;
@@ -914,7 +916,7 @@ void DeleteData(string tableName) {
             int nextCount = 0;
             int confirm = String2Int(confirmString);
             if (confirm == 1) {
-                /*Ö´ĞĞÉ¾³ı²Ù×÷*/
+                /*æ‰§è¡Œåˆ é™¤æ“ä½œ*/
                 while (pNext != NULL) {
                     if (count == resIndex[nextCount]) {
                         p->next = pNext->next;
@@ -930,10 +932,10 @@ void DeleteData(string tableName) {
                     count++;
                 }
                 table->nodeHead = trueHead;
-                /*Õ¹Ê¾É¾³ıºóÄÚÈİ*/
+                /*å±•ç¤ºåˆ é™¤åå†…å®¹*/
                 OutputDisplay(table->segmentName, table->displayArray, table->nodeHead, table->typeArray,
                               table->segmentNum);
-                /*¸üĞÂÊı¾İindex*/
+                /*æ›´æ–°æ•°æ®index*/
                 int newIndex = 0;
                 p = table->nodeHead;
                 while (p != NULL) {
@@ -944,8 +946,8 @@ void DeleteData(string tableName) {
 
         }
 
-        /*Ñ¯ÎÊÓÃ»§ÊÇ·ñ¼ÌĞøÉ¾³ı²¢ÇÒ»ñÈ¡ÓÃ»§Ö¸Áî*/
-        cout << "ÊÇ·ñ¼ÌĞøÉ¾³ıÊı¾İ£¿ÊäÈë1¼ÌĞø£¬ÊäÈëÆäËûÍË³öÉ¾³ı\n";
+        /*è¯¢é—®ç”¨æˆ·æ˜¯å¦ç»§ç»­åˆ é™¤å¹¶ä¸”è·å–ç”¨æˆ·æŒ‡ä»¤*/
+        cout << "æ˜¯å¦ç»§ç»­åˆ é™¤æ•°æ®ï¼Ÿè¾“å…¥1ç»§ç»­ï¼Œè¾“å…¥å…¶ä»–é€€å‡ºåˆ é™¤\n";
         string confirmString2;
         cin >> confirmString2;
         int confirmFlag2 = CorrectInt(confirmString2);
@@ -959,20 +961,20 @@ void DeleteData(string tableName) {
         }
     }
 
-    /*´¢´æÉ¾³ıºóµÄ±í*/
+    /*å‚¨å­˜åˆ é™¤åçš„è¡¨*/
     StoreTable(table);
 }
 
 int *InfoData(int flag, struct Table *table) {
-    string *infoSegmentName = table->segmentName;//×Ö¶ÎÃûÊı×é
-    int *infoDisplayArray = table->displayArray;//±íµÄÕ¹Ê¾ÄÄ¸ö×Ö¶ÎµÄ£¨Ö¸Õë£©Êı×é
-    int len = 0;//×Ö¶ÎÊı
-    len = table->segmentNum;//±íµÄÕæÊµ×Ö¶ÎÊı
+    string *infoSegmentName = table->segmentName;//å­—æ®µåæ•°ç»„
+    int *infoDisplayArray = table->displayArray;//è¡¨çš„å±•ç¤ºå“ªä¸ªå­—æ®µçš„ï¼ˆæŒ‡é’ˆï¼‰æ•°ç»„
+    int len = 0;//å­—æ®µæ•°
+    len = table->segmentNum;//è¡¨çš„çœŸå®å­—æ®µæ•°
 
-    /*¼ÇÂ¼×Ö¶ÎÔÚ¶ÔÓ¦ÀàĞÍµÄÊı×éÖĞµÄÏÂ±ê*/
-    int totalLength = table->segmentNum; // È¡µÃ×Ö¶Î×Ü¸öÊı
-    int num_int = 0, num_double = 0, num_string = 0;//ÔÚintArrayµÄÏÂ±ê£¬ÔÚdoubleArrayÖĞµÄÏÂ±ê£¬ÔÚstringArrayµÄÏÂ±ê
-    int *displayIndex = new int[totalLength]; // ¼ÇÂ¼×Ö¶ÎÔÚ¶ÔÓ¦ÀàĞÍµÄÊı×éÖĞµÄÏÂ±êµÄÊı×é
+    /*è®°å½•å­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„ä¸­çš„ä¸‹æ ‡*/
+    int totalLength = table->segmentNum; // å–å¾—å­—æ®µæ€»ä¸ªæ•°
+    int num_int = 0, num_double = 0, num_string = 0;//åœ¨intArrayçš„ä¸‹æ ‡ï¼Œåœ¨doubleArrayä¸­çš„ä¸‹æ ‡ï¼Œåœ¨stringArrayçš„ä¸‹æ ‡
+    int *displayIndex = new int[totalLength]; // è®°å½•å­—æ®µåœ¨å¯¹åº”ç±»å‹çš„æ•°ç»„ä¸­çš„ä¸‹æ ‡çš„æ•°ç»„
     for (int i = 0; i < totalLength; i++) {
         displayIndex[i] = 0;
     }
@@ -990,55 +992,55 @@ int *InfoData(int flag, struct Table *table) {
         }
     }
 
-    struct Node *p = table->nodeHead;//±íµÄµÚÒ»ÌõÊı¾İµÄÖ¸Õë
-    struct Node *infoResultNode = nullptr;//²éÑ¯½á¹ûµÄÍ·Ö¸Õë
-    struct Node *nextInfoNode = nullptr;//ÏÂÒ»Ìõ²éÑ¯½á¹ûµÄÖ¸Õë
+    struct Node *p = table->nodeHead;//è¡¨çš„ç¬¬ä¸€æ¡æ•°æ®çš„æŒ‡é’ˆ
+    struct Node *infoResultNode = nullptr;//æŸ¥è¯¢ç»“æœçš„å¤´æŒ‡é’ˆ
+    struct Node *nextInfoNode = nullptr;//ä¸‹ä¸€æ¡æŸ¥è¯¢ç»“æœçš„æŒ‡é’ˆ
 
-    int timesFlag = 0;//¼ÇÂ¼ÊÇ·ñÊÇµÚÒ»´Î½øÈë²éÑ¯£¬0ÊÇµÚÒ»´Î£¬1²»ÊÇ
+    int timesFlag = 0;//è®°å½•æ˜¯å¦æ˜¯ç¬¬ä¸€æ¬¡è¿›å…¥æŸ¥è¯¢ï¼Œ0æ˜¯ç¬¬ä¸€æ¬¡ï¼Œ1ä¸æ˜¯
     while (1) {
-        if (timesFlag == 1) {//µ±²»ÊÇµÚÒ»´Î½øÈë£¬pÖ¸ÕëµÈÓÚ²éÑ¯½á¹ûµÄÍ·Ö¸Õë
+        if (timesFlag == 1) {//å½“ä¸æ˜¯ç¬¬ä¸€æ¬¡è¿›å…¥ï¼ŒpæŒ‡é’ˆç­‰äºæŸ¥è¯¢ç»“æœçš„å¤´æŒ‡é’ˆ
             p = infoResultNode;
         }
 
-        int index;//Õâ¸ö±íÖĞµÚ¼¸ÌõÊı¾İ±í
+        int index;//è¿™ä¸ªè¡¨ä¸­ç¬¬å‡ æ¡æ•°æ®è¡¨
 
-        /*Êä³öÌáÊ¾Óï*/
-        cout << "±íÓĞÈçÏÂ×Ö¶Î£º\n";
+        /*è¾“å‡ºæç¤ºè¯­*/
+        cout << "è¡¨æœ‰å¦‚ä¸‹å­—æ®µï¼š\n";
         for (int i = 0; i < len; ++i) {
             cout << i + 1 << ". " << infoSegmentName[i] << " ";
         }
-        cout << "\nÇëÊäÈëÔ¼ÊøÌõ¼ş×Ö¶ÎµÄ±àºÅ,ÊäÈë0·µ»Ø\n";
+        cout << "\nè¯·è¾“å…¥çº¦æŸæ¡ä»¶å­—æ®µçš„ç¼–å·,è¾“å…¥0è¿”å›\n";
 
-        /*ÊäÈë±àºÅ*/
+        /*è¾“å…¥ç¼–å·*/
         string indexRes;
         cin >> indexRes;
-        int indexFlag = CorrectInt(indexRes);//ÅĞ¶ÏºÏ·¨ĞÔ£¨ÊÇ·ñÊÇint£©
+        int indexFlag = CorrectInt(indexRes);//åˆ¤æ–­åˆæ³•æ€§ï¼ˆæ˜¯å¦æ˜¯intï¼‰
 
-        if (indexFlag) {//Èç¹ûºÏ·¨
+        if (indexFlag) {//å¦‚æœåˆæ³•
 
             index = String2Int(indexRes);
             if (index == 0) {
                 return 0;
             }
-            if (0 < index && index <= len) {//ÅĞ¶ÏºÏ·¨ĞÔ£¨·¶Î§ÊÇ·ñºÏ·¨£©
+            if (0 < index && index <= len) {//åˆ¤æ–­åˆæ³•æ€§ï¼ˆèŒƒå›´æ˜¯å¦åˆæ³•ï¼‰
 
-                //Èç¹ûºÏ·¨£¬»ñÈ¡×Ö¶ÎµÄÖµ
-                cout << "ÇëÊäÈëÔ¼ÊøÌõ¼şµÄÖµ\n";
+                //å¦‚æœåˆæ³•ï¼Œè·å–å­—æ®µçš„å€¼
+                cout << "è¯·è¾“å…¥çº¦æŸæ¡ä»¶çš„å€¼\n";
                 string itemRes;
                 cin >> itemRes;
                 int type = table->typeArray[index - 1];
                 int itemFlag = -1;
 
-                if (type == 0) {//Èç¹û×Ö¶ÎÀàĞÍÊÇint
-                    itemFlag = CorrectInt(itemRes);//ºÏ·¨ĞÔÅĞ¶Ï
+                if (type == 0) {//å¦‚æœå­—æ®µç±»å‹æ˜¯int
+                    itemFlag = CorrectInt(itemRes);//åˆæ³•æ€§åˆ¤æ–­
 
-                    /*¾­¹ıºÏ·¨ĞÔÅĞ¶Ïºó£¬ÕâÀïÃæ½øĞĞÑ°ÕÒ·ûºÏÌõ¼şµÄÖµ*/
+                    /*ç»è¿‡åˆæ³•æ€§åˆ¤æ–­åï¼Œè¿™é‡Œé¢è¿›è¡Œå¯»æ‰¾ç¬¦åˆæ¡ä»¶çš„å€¼*/
                     if (itemFlag == 1) {
                         int targetInt = String2Int(itemRes);
 
-                        /*±éÀúÊı¾İ±í*/
+                        /*éå†æ•°æ®è¡¨*/
                         while (p != NULL) {
-                            int resInt = p->intArray[displayIndex[index - 1]];//»ñÈ¡Ä³Ò»ÌõÊı¾İµÄ¶ÔÓ¦×Ö¶ÎµÄÖµ
+                            int resInt = p->intArray[displayIndex[index - 1]];//è·å–æŸä¸€æ¡æ•°æ®çš„å¯¹åº”å­—æ®µçš„å€¼
                             if (resInt == targetInt) {
                                 if (infoResultNode == nullptr) {
                                     nextInfoNode = p;
@@ -1056,18 +1058,18 @@ int *InfoData(int flag, struct Table *table) {
                         }
 
                     } else {
-                        cout << "ÄÚÈİÓĞÎó£¬ÇëÖØĞÂÊäÈë\n";
+                        cout << "å†…å®¹æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
                     }
-                } else if (type == 1) {//Èç¹û×Ö¶ÎÀàĞÍÊÇdouble
-                    itemFlag = CorrectDouble(itemRes);//ºÏ·¨ĞÔÅĞ¶Ï
+                } else if (type == 1) {//å¦‚æœå­—æ®µç±»å‹æ˜¯double
+                    itemFlag = CorrectDouble(itemRes);//åˆæ³•æ€§åˆ¤æ–­
 
-                    /*¾­¹ıºÏ·¨ĞÔÅĞ¶Ïºó£¬ÕâÀïÃæ½øĞĞÑ°ÕÒ·ûºÏÌõ¼şµÄÖµ*/
+                    /*ç»è¿‡åˆæ³•æ€§åˆ¤æ–­åï¼Œè¿™é‡Œé¢è¿›è¡Œå¯»æ‰¾ç¬¦åˆæ¡ä»¶çš„å€¼*/
                     if (itemFlag == 1) {
                         double targetDouble = String2Double(itemRes);
 
-                        /*±éÀúÊı¾İ±í*/
+                        /*éå†æ•°æ®è¡¨*/
                         while (p != NULL) {
-                            int resDouble = p->doubleArray[displayIndex[index - 1]];//»ñÈ¡Ä³Ò»ÌõÊı¾İµÄ¶ÔÓ¦×Ö¶ÎµÄÖµ
+                            int resDouble = p->doubleArray[displayIndex[index - 1]];//è·å–æŸä¸€æ¡æ•°æ®çš„å¯¹åº”å­—æ®µçš„å€¼
                             if (resDouble == targetDouble) {
                                 if (infoResultNode == NULL) {
                                     nextInfoNode = p;
@@ -1084,18 +1086,18 @@ int *InfoData(int flag, struct Table *table) {
                             }
                         }
                     } else {
-                        cout << "ÄÚÈİÓĞÎó£¬ÇëÖØĞÂÊäÈë\n";
+                        cout << "å†…å®¹æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
                     }
-                } else {//Èç¹û×Ö¶ÎÀàĞÍÊÇstring
-                    itemFlag = CorrectString(itemRes);//ºÏ·¨ĞÔÅĞ¶Ï
+                } else {//å¦‚æœå­—æ®µç±»å‹æ˜¯string
+                    itemFlag = CorrectString(itemRes);//åˆæ³•æ€§åˆ¤æ–­
 
-                    /*¾­¹ıºÏ·¨ĞÔÅĞ¶Ïºó£¬ÕâÀïÃæ½øĞĞÑ°ÕÒ·ûºÏÌõ¼şµÄÖµ*/
+                    /*ç»è¿‡åˆæ³•æ€§åˆ¤æ–­åï¼Œè¿™é‡Œé¢è¿›è¡Œå¯»æ‰¾ç¬¦åˆæ¡ä»¶çš„å€¼*/
                     if (itemFlag == 1) {
                         string targetString = itemRes;
 
-                        /*±éÀúÊı¾İ±í*/
+                        /*éå†æ•°æ®è¡¨*/
                         while (p != NULL) {
-                            string resString = p->stringArray[displayIndex[index - 1]];//»ñÈ¡Ä³Ò»ÌõÊı¾İµÄ¶ÔÓ¦×Ö¶ÎµÄÖµ
+                            string resString = p->stringArray[displayIndex[index - 1]];//è·å–æŸä¸€æ¡æ•°æ®çš„å¯¹åº”å­—æ®µçš„å€¼
                             if (resString == targetString) {
                                 if (infoResultNode == nullptr) {
                                     nextInfoNode = p;
@@ -1105,28 +1107,28 @@ int *InfoData(int flag, struct Table *table) {
                                     nextInfoNode = nextInfoNode->next_info;
                                 }
                             }
-                            if (timesFlag == 1) {//Èç¹û²»ÊÇµÚÒ»´Î½øÈë£¬±éÀúµÄ·½Ê½Í¨¹ı±éÀúÉÏÒ»´Î²éÑ¯µÄ½á¹ûÁ´±í
+                            if (timesFlag == 1) {//å¦‚æœä¸æ˜¯ç¬¬ä¸€æ¬¡è¿›å…¥ï¼Œéå†çš„æ–¹å¼é€šè¿‡éå†ä¸Šä¸€æ¬¡æŸ¥è¯¢çš„ç»“æœé“¾è¡¨
                                 p = p->next_info;
                             } else {
-                                p = p->next;//Èç¹ûÊÇµÚÒ»´Î½øÈë£¬±éÀúµÄ·½Ê½Í¨¹ı±éÀú±í
+                                p = p->next;//å¦‚æœæ˜¯ç¬¬ä¸€æ¬¡è¿›å…¥ï¼Œéå†çš„æ–¹å¼é€šè¿‡éå†è¡¨
                             }
                         }
                     } else {
-                        cout << "ÄÚÈİÓĞÎó£¬ÇëÖØĞÂÊäÈë\n";
+                        cout << "å†…å®¹æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
                     }
                 }
 
 
             } else {
-                cout << "±àºÅÓĞÎó\n";
+                cout << "ç¼–å·æœ‰è¯¯\n";
             }
         } else {
-            cout << "±àºÅÓĞÎó\n";
+            cout << "ç¼–å·æœ‰è¯¯\n";
         }
 
-        /*Êä³öÌáÊ¾Óï²¢ÇÒ»ñÈ¡ÓÃ»§ÊÇ·ñ¼ÌĞø²éÕÒ£¬Èç¹û¼ÌĞø²éÕÒ£¬¾Í¼ÌĞøÑ­»·£¬Èç¹û²»²éÕÒÁË¾Íbreak£»*/
+        /*è¾“å‡ºæç¤ºè¯­å¹¶ä¸”è·å–ç”¨æˆ·æ˜¯å¦ç»§ç»­æŸ¥æ‰¾ï¼Œå¦‚æœç»§ç»­æŸ¥æ‰¾ï¼Œå°±ç»§ç»­å¾ªç¯ï¼Œå¦‚æœä¸æŸ¥æ‰¾äº†å°±breakï¼›*/
         if (infoResultNode == NULL) {
-            cout << "Ã»ÓĞ·ûºÏÒªÇóµÄ²éÑ¯½á¹û\n";
+            cout << "æ²¡æœ‰ç¬¦åˆè¦æ±‚çš„æŸ¥è¯¢ç»“æœ\n";
             return nullptr;
         } else {
             if (timesFlag == 0) {
@@ -1137,9 +1139,9 @@ int *InfoData(int flag, struct Table *table) {
 
     }
 
-    /*ÖÁ´Ë£¬infoResultNodeÒÑ¾­²éÕÒºÃÁË*/
+    /*è‡³æ­¤ï¼ŒinfoResultNodeå·²ç»æŸ¥æ‰¾å¥½äº†*/
 
-    /*°ÑÃ¿Ò»Ìõ²éÕÒ½á¹ûµÄÏÂ±ê´æÔÚindexArray£¬µÈÏÂÒª·µ»Ø*/
+    /*æŠŠæ¯ä¸€æ¡æŸ¥æ‰¾ç»“æœçš„ä¸‹æ ‡å­˜åœ¨indexArrayï¼Œç­‰ä¸‹è¦è¿”å›*/
     int nodeNum = 0;
     struct Node *p2;
     p2 = infoResultNode;
@@ -1147,7 +1149,7 @@ int *InfoData(int flag, struct Table *table) {
         nodeNum++;
         p2 = p2->next_info;
     }
-    int *indexArray = new int[nodeNum];//´æ´¢µÄindexArray
+    int *indexArray = new int[nodeNum];//å­˜å‚¨çš„indexArray
     int nodeIndex = 0;//
     p2 = infoResultNode;
     while (p2 != NULL) {
@@ -1157,35 +1159,35 @@ int *InfoData(int flag, struct Table *table) {
     }
 
     int *showArray = new int[len];
-    /*Èç¹ûÊÇÖ÷º¯Êıµ÷ÓÃµÄ²éÑ¯º¯Êı£¬¾ÍÒªÑ¡ÔñÕ¹Ê¾×Ö¶Î*/
+    /*å¦‚æœæ˜¯ä¸»å‡½æ•°è°ƒç”¨çš„æŸ¥è¯¢å‡½æ•°ï¼Œå°±è¦é€‰æ‹©å±•ç¤ºå­—æ®µ*/
     if (flag == 0) {
         int breakFlag = 0;
         while (1) {
 
-            /*Êä³öÌáÊ¾Óï*/
-            cout << "ÇëÑ¡ÔñÒªÕ¹Ê¾µÄ×Ö¶Î\n";
-            cout << "±íÓĞÈçÏÂ×Ö¶Î£º\n";
+            /*è¾“å‡ºæç¤ºè¯­*/
+            cout << "è¯·é€‰æ‹©è¦å±•ç¤ºçš„å­—æ®µ\n";
+            cout << "è¡¨æœ‰å¦‚ä¸‹å­—æ®µï¼š\n";
             for (int i = 0; i < len; ++i) {
                 cout << i + 1 << ". " << infoSegmentName[i] << " ";
             }
             cout << endl;
-            /*ÊäÈëÕ¹Ê¾µÄ×Ö¶ÎÏÂ±ê*/
+            /*è¾“å…¥å±•ç¤ºçš„å­—æ®µä¸‹æ ‡*/
             while (1) {
-                cout << "ÇëÊäÈëÔ¼ÊøÌõ¼ş×Ö¶ÎµÄ±àºÅ,ÊäÈë0½áÊø£¬ÊäÈë-1Õ¹Ê¾È«²¿×Ö¶Î:";
+                cout << "è¯·è¾“å…¥çº¦æŸæ¡ä»¶å­—æ®µçš„ç¼–å·,è¾“å…¥0ç»“æŸï¼Œè¾“å…¥-1å±•ç¤ºå…¨éƒ¨å­—æ®µ:";
                 int showIndex;
                 cin >> showIndex;
                 if (showIndex == 0) {
                     breakFlag = 1;
                     break;
                 } else if (showIndex < -1 || showIndex > len) {
-                    cout << "±àºÅÓĞÎó£¬ÇëÖØĞÂÊäÈë\n";
+                    cout << "ç¼–å·æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
                     break;
                 } else if (showIndex == -1) {
 //                    memset(showArray, 1, table->segmentNum);
                     for (int i = 0; i < table->segmentNum; ++i) {
                         showArray[i] = 1;
                     }
-                    cout << "Êä³öÈ«²¿×Ö¶Î:\n";
+                    cout << "è¾“å‡ºå…¨éƒ¨å­—æ®µ:\n";
                     breakFlag = 1;
                 } else {
                     showArray[showIndex - 1] = 1;
@@ -1197,17 +1199,17 @@ int *InfoData(int flag, struct Table *table) {
             break;
         }
         cout << endl;
-        /*Ñ¡ÔñÍê×Ö¶ÎÖ®ºó£¬Õ¹Ê¾ÄÚÈİ*/
+        /*é€‰æ‹©å®Œå­—æ®µä¹‹åï¼Œå±•ç¤ºå†…å®¹*/
         OutputDisplay2(table->segmentName, showArray, infoResultNode, table->typeArray, table->segmentNum);
         DeleteTable(table);
-        /*·µ»Ø²éÕÒ½á¹ûµÄÏÂ±ê¼¯ºÏ*/
+        /*è¿”å›æŸ¥æ‰¾ç»“æœçš„ä¸‹æ ‡é›†åˆ*/
         return indexArray;
     } else {
-/*ÉÏÃæÒÑ¾­°ÑÕÒµ½µÄ½á¹û·ÅÔÚinfoResultNodeÁË£¬ÏÖÔÚ½øĞĞÕ¹Ê¾*/
+/*ä¸Šé¢å·²ç»æŠŠæ‰¾åˆ°çš„ç»“æœæ”¾åœ¨infoResultNodeäº†ï¼Œç°åœ¨è¿›è¡Œå±•ç¤º*/
         OutputDisplay2(table
                                ->segmentName, table->displayArray, infoResultNode, table->typeArray,
-                       table->segmentNum);//Õ¹Ê¾ÏÖÔÚµÄ²éÑ¯Çé¿ö¸øÓÃ»§
-/*·µ»Ø²éÕÒ½á¹ûµÄÏÂ±ê¼¯ºÏ*/
+                       table->segmentNum);//å±•ç¤ºç°åœ¨çš„æŸ¥è¯¢æƒ…å†µç»™ç”¨æˆ·
+/*è¿”å›æŸ¥æ‰¾ç»“æœçš„ä¸‹æ ‡é›†åˆ*/
         return
                 indexArray;
     }

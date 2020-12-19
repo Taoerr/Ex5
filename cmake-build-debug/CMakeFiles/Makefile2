@@ -54,25 +54,25 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "F:\CLion 2020.3\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\Clion\CLion 2020.3\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "F:\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\Clion\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\clionProjects\DataBase_2
+CMAKE_SOURCE_DIR = D:\SoftwareEngineering\Database
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\clionProjects\DataBase_2\cmake-build-debug
+CMAKE_BINARY_DIR = D:\SoftwareEngineering\Database\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/DataBase_2.dir/all
+all: CMakeFiles/DataBase.dir/all
 
 .PHONY : all
 
@@ -82,36 +82,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/DataBase_2.dir/clean
+clean: CMakeFiles/DataBase.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/DataBase_2.dir
+# Target rules for target CMakeFiles/DataBase.dir
 
 # All Build rule for target.
-CMakeFiles/DataBase_2.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\clionProjects\DataBase_2\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target DataBase_2"
-.PHONY : CMakeFiles/DataBase_2.dir/all
+CMakeFiles/DataBase.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\SoftwareEngineering\Database\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target DataBase"
+.PHONY : CMakeFiles/DataBase.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/DataBase_2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\clionProjects\DataBase_2\cmake-build-debug\CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/DataBase_2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\clionProjects\DataBase_2\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/DataBase_2.dir/rule
+CMakeFiles/DataBase.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\SoftwareEngineering\Database\cmake-build-debug\CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/DataBase.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\SoftwareEngineering\Database\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/DataBase.dir/rule
 
 # Convenience name for target.
-DataBase_2: CMakeFiles/DataBase_2.dir/rule
+DataBase: CMakeFiles/DataBase.dir/rule
 
-.PHONY : DataBase_2
+.PHONY : DataBase
 
 # clean rule for target.
-CMakeFiles/DataBase_2.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/clean
-.PHONY : CMakeFiles/DataBase_2.dir/clean
+CMakeFiles/DataBase.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/clean
+.PHONY : CMakeFiles/DataBase.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -58,38 +58,27 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "F:\CLion 2020.3\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\Clion\CLion 2020.3\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "F:\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\Clion\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\clionProjects\DataBase_2
+CMAKE_SOURCE_DIR = D:\SoftwareEngineering\Database
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\clionProjects\DataBase_2\cmake-build-debug
+CMAKE_BINARY_DIR = D:\SoftwareEngineering\Database\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"F:\CLion 2020.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"F:\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"D:\Clion\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -97,11 +86,22 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	"D:\Clion\CLion 2020.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\clionProjects\DataBase_2\cmake-build-debug\CMakeFiles E:\clionProjects\DataBase_2\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\SoftwareEngineering\Database\cmake-build-debug\CMakeFiles D:\SoftwareEngineering\Database\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\clionProjects\DataBase_2\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\SoftwareEngineering\Database\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,17 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DataBase_2
+# Target rules for targets named DataBase
 
 # Build rule for target.
-DataBase_2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 DataBase_2
-.PHONY : DataBase_2
+DataBase: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 DataBase
+.PHONY : DataBase
 
 # fast build rule for target.
-DataBase_2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/build
-.PHONY : DataBase_2/fast
+DataBase/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/build
+.PHONY : DataBase/fast
 
 IOFunctions.obj: IOFunctions.cpp.obj
 
@@ -148,7 +148,7 @@ IOFunctions.obj: IOFunctions.cpp.obj
 
 # target to build an object file
 IOFunctions.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/IOFunctions.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/IOFunctions.cpp.obj
 .PHONY : IOFunctions.cpp.obj
 
 IOFunctions.i: IOFunctions.cpp.i
@@ -157,7 +157,7 @@ IOFunctions.i: IOFunctions.cpp.i
 
 # target to preprocess a source file
 IOFunctions.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/IOFunctions.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/IOFunctions.cpp.i
 .PHONY : IOFunctions.cpp.i
 
 IOFunctions.s: IOFunctions.cpp.s
@@ -166,7 +166,7 @@ IOFunctions.s: IOFunctions.cpp.s
 
 # target to generate assembly for a file
 IOFunctions.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/IOFunctions.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/IOFunctions.cpp.s
 .PHONY : IOFunctions.cpp.s
 
 TableFunctions.obj: TableFunctions.cpp.obj
@@ -175,7 +175,7 @@ TableFunctions.obj: TableFunctions.cpp.obj
 
 # target to build an object file
 TableFunctions.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/TableFunctions.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/TableFunctions.cpp.obj
 .PHONY : TableFunctions.cpp.obj
 
 TableFunctions.i: TableFunctions.cpp.i
@@ -184,7 +184,7 @@ TableFunctions.i: TableFunctions.cpp.i
 
 # target to preprocess a source file
 TableFunctions.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/TableFunctions.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/TableFunctions.cpp.i
 .PHONY : TableFunctions.cpp.i
 
 TableFunctions.s: TableFunctions.cpp.s
@@ -193,7 +193,7 @@ TableFunctions.s: TableFunctions.cpp.s
 
 # target to generate assembly for a file
 TableFunctions.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/TableFunctions.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/TableFunctions.cpp.s
 .PHONY : TableFunctions.cpp.s
 
 main.obj: main.cpp.obj
@@ -202,7 +202,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -211,7 +211,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -220,7 +220,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase_2.dir\build.make CMakeFiles/DataBase_2.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataBase.dir\build.make CMakeFiles/DataBase.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -231,7 +231,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... DataBase_2
+	@echo ... DataBase
 	@echo ... IOFunctions.obj
 	@echo ... IOFunctions.i
 	@echo ... IOFunctions.s

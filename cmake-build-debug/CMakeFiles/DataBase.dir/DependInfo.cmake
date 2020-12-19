@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "E:/clionProjects/DataBase_2/IOFunctions.cpp" "E:/clionProjects/DataBase_2/cmake-build-debug/CMakeFiles/DataBase_2.dir/IOFunctions.cpp.obj"
-  "E:/clionProjects/DataBase_2/TableFunctions.cpp" "E:/clionProjects/DataBase_2/cmake-build-debug/CMakeFiles/DataBase_2.dir/TableFunctions.cpp.obj"
-  "E:/clionProjects/DataBase_2/main.cpp" "E:/clionProjects/DataBase_2/cmake-build-debug/CMakeFiles/DataBase_2.dir/main.cpp.obj"
+  "D:/SoftwareEngineering/Database/IOFunctions.cpp" "D:/SoftwareEngineering/Database/cmake-build-debug/CMakeFiles/DataBase.dir/IOFunctions.cpp.obj"
+  "D:/SoftwareEngineering/Database/TableFunctions.cpp" "D:/SoftwareEngineering/Database/cmake-build-debug/CMakeFiles/DataBase.dir/TableFunctions.cpp.obj"
+  "D:/SoftwareEngineering/Database/main.cpp" "D:/SoftwareEngineering/Database/cmake-build-debug/CMakeFiles/DataBase.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

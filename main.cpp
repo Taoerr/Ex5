@@ -4,45 +4,45 @@
 #include <string>
 using namespace std;
 
-// TODO: ÈçºÎÊ¹ÓÃstringº¯Êı£ºhttps://blog.csdn.net/fybon/article/details/52995358
+// TODO: å¦‚ä½•ä½¿ç”¨stringå‡½æ•°ï¼šhttps://blog.csdn.net/fybon/article/details/52995358
 
 int main() {
     int flag1 = 1;
-    // flag1ÊÇÉèÖÃÍâ²ãÑ­»·µÄbool£¬Ò»Ö±ÊÇtrue
-    // flag2ÊÇÉèÖÃÄÚ²ãÑ­»·µÄbool
-    cout << "»¶Ó­Ê¹ÓÃÊı¾İ¹ÜÀíÈí¼ş£¡\n";
+    // flag1æ˜¯è®¾ç½®å¤–å±‚å¾ªç¯çš„boolï¼Œä¸€ç›´æ˜¯true
+    // flag2æ˜¯è®¾ç½®å†…å±‚å¾ªç¯çš„bool
+    cout << "æ¬¢è¿ä½¿ç”¨æ•°æ®ç®¡ç†è½¯ä»¶ï¼\n";
     DisplayTables();
     while (flag1) {
-        // TODO: ½øĞĞµÚÒ»´ÎÑ¡Ôñ
-        cout << "ÊäÈë 0 : ÖÕÖ¹³ÌĞò\n"
-             << "ÊäÈë 1 : ´´½¨Êı¾İ±í\n"
-             << "ÊäÈë 2 : É¾³ıÊı¾İ±í\n"
-             << "ÊäÈë 3 : ĞŞ¸ÄÊı¾İ±í\n"
-             << "ÊäÈë 4 : ²é¿´Ä³ÕÅÊı¾İ±í\n"
-             << "ÊäÈë 5 : ĞŞ¸ÄÊı¾İ±íÄÚÈİ\n"
-             << "ÇëÊäÈëĞèÒª½øĞĞÄÄÖÖ²Ù×÷£º";
+        // TODO: è¿›è¡Œç¬¬ä¸€æ¬¡é€‰æ‹©
+        cout << "è¾“å…¥ 0 : ç»ˆæ­¢ç¨‹åº\n"
+             << "è¾“å…¥ 1 : åˆ›å»ºæ•°æ®è¡¨\n"
+             << "è¾“å…¥ 2 : åˆ é™¤æ•°æ®è¡¨\n"
+             << "è¾“å…¥ 3 : ä¿®æ”¹æ•°æ®è¡¨\n"
+             << "è¾“å…¥ 4 : æŸ¥çœ‹æŸå¼ æ•°æ®è¡¨\n"
+             << "è¾“å…¥ 5 : ä¿®æ”¹æ•°æ®è¡¨å†…å®¹\n"
+             << "è¯·è¾“å…¥éœ€è¦è¿›è¡Œå“ªç§æ“ä½œï¼š";
         int num1 = -1;
         cin >> num1;
         while (num1 < 0 || num1 > 5) {
-            cout << "ÊäÈë²»ÕıÈ·£¬ÇëÖØĞÂÑ¡Ôñ£º";
+            cout << "è¾“å…¥ä¸æ­£ç¡®ï¼Œè¯·é‡æ–°é€‰æ‹©ï¼š";
             cin >> num1;
         }
         string tableName = "";
-        // TODO: ½øĞĞµÚÒ»´ÎnumµÄÅĞ¶Ï
-        if (num1 == 0)// Ö±½ÓÖÕÖ¹³ÌĞò£º
+        // TODO: è¿›è¡Œç¬¬ä¸€æ¬¡numçš„åˆ¤æ–­
+        if (num1 == 0)// ç›´æ¥ç»ˆæ­¢ç¨‹åºï¼š
             return 0;
-        else if (num1 == 1) // Ìí¼ÓÊı¾İ±í
+        else if (num1 == 1) // æ·»åŠ æ•°æ®è¡¨
             CreateTable();
         else if (num1 == 3) {
             while (1){
-                cout << "ÇëÊäÈëĞèÒª½øĞĞÄÄÖÖ²Ù×÷£º\n"
-                     << "ÊäÈë 0 : ĞŞ¸Ä±íÃû\n"
-                     << "ÊäÈë 1 : ĞŞ¸Ä×Ö¶ÎÃû\n"
-                     << "ÊäÈë 2 : ·µ»ØÉÏÒ»¼¶\n";
+                cout << "è¯·è¾“å…¥éœ€è¦è¿›è¡Œå“ªç§æ“ä½œï¼š\n"
+                     << "è¾“å…¥ 0 : ä¿®æ”¹è¡¨å\n"
+                     << "è¾“å…¥ 1 : ä¿®æ”¹å­—æ®µå\n"
+                     << "è¾“å…¥ 2 : è¿”å›ä¸Šä¸€çº§\n";
                 int num = -1;
                 cin >> num;
                 while (num < 0 || num > 2) {
-                    cout << "ÊäÈë²»ÕıÈ·£¬ÇëÖØĞÂÑ¡Ôñ£º";
+                    cout << "è¾“å…¥ä¸æ­£ç¡®ï¼Œè¯·é‡æ–°é€‰æ‹©ï¼š";
                     cin >> num;
                 }
 
@@ -55,18 +55,18 @@ int main() {
             }
         }
         else {
-            cout << "ÇëÊäÈë±íÃû³Æ£º";
+            cout << "è¯·è¾“å…¥è¡¨åç§°ï¼š";
             cin >> tableName;
-            while (!CorrectString(tableName)) { // ¼ì²éstringºÏ·¨ĞÔ
-                cout << "ÇëÖØĞÂÊäÈë±íÃû³Æ£º";
+            while (!CorrectString(tableName)) { // æ£€æŸ¥stringåˆæ³•æ€§
+                cout << "è¯·é‡æ–°è¾“å…¥è¡¨åç§°ï¼š";
                 cin >> tableName;
             }
-            if (num1 == 2) DeleteTable(tableName); // É¾³ıÊı¾İ±í
+            if (num1 == 2) DeleteTable(tableName); // åˆ é™¤æ•°æ®è¡¨
             if (num1 == 4) {
-                // ²é¿´ÕûÕÅÊı¾İ±í
+                // æŸ¥çœ‹æ•´å¼ æ•°æ®è¡¨
                 struct Table *table = ReadTable(tableName);
                 if (table != NULL) {
-                    cout << "¶ÁÈ¡±íÍê±Ï£¬±íÄÚÈİÈçÏÂ\n";
+                    cout << "è¯»å–è¡¨å®Œæ¯•ï¼Œè¡¨å†…å®¹å¦‚ä¸‹\n";
                     for (int i = 0; i < table->segmentNum; ++i) {
 //                        cout << "+++++++" << table->segmentName[i] << "++++++\n";
                     }
@@ -75,38 +75,38 @@ int main() {
                 }
             }
             if (num1 == 5) {
-                // ĞŞ¸ÄÊı¾İ±í
-                // TODO: ½øĞĞµÚ¶ş´ÎÑ¡Ôñ£º
+                // ä¿®æ”¹æ•°æ®è¡¨
+                // TODO: è¿›è¡Œç¬¬äºŒæ¬¡é€‰æ‹©ï¼š
                 int num2 = -1;
                 struct Table *table = ReadTable(tableName);
                 if (table != NULL) {
-                    cout << "ÄúÑ¡ÔñµÄ±íÊÇ£º" << tableName << "£¬±íµÄÄÚÈİÈçÏÂ:" << endl;
+                    cout << "æ‚¨é€‰æ‹©çš„è¡¨æ˜¯ï¼š" << tableName << "ï¼Œè¡¨çš„å†…å®¹å¦‚ä¸‹:" << endl;
                     OutputDisplay(table->segmentName, table->displayArray, table->nodeHead, table->typeArray, table->segmentNum);
                     DeleteTable(table);
-                    cout << " ÇëÊäÈëĞèÒª½øĞĞÄÄÖÖ²Ù×÷£º\n"
-                         << "ÊäÈë 0 : ·µ»Øµ½ÉÏÒ»¼¶²Ù×÷\n"
-                         << "ÊäÈë 1 : Ôö¼ÓÒ»ĞĞÊı¾İ\n"
-                         << "ÊäÈë 2 : É¾³ıÒ»ĞĞÊı¾İ\n"
-                         << "ÊäÈë 3 : ²éÕÒÖ¸¶¨Êı¾İ\n"
-                         << "ÊäÈë 4 : ĞŞ¸ÄÖ¸¶¨Êı¾İ\n";
+                    cout << " è¯·è¾“å…¥éœ€è¦è¿›è¡Œå“ªç§æ“ä½œï¼š\n"
+                         << "è¾“å…¥ 0 : è¿”å›åˆ°ä¸Šä¸€çº§æ“ä½œ\n"
+                         << "è¾“å…¥ 1 : å¢åŠ ä¸€è¡Œæ•°æ®\n"
+                         << "è¾“å…¥ 2 : åˆ é™¤ä¸€è¡Œæ•°æ®\n"
+                         << "è¾“å…¥ 3 : æŸ¥æ‰¾æŒ‡å®šæ•°æ®\n"
+                         << "è¾“å…¥ 4 : ä¿®æ”¹æŒ‡å®šæ•°æ®\n";
                     cin >> num2;
                     while (num2 < 0 || num2 > 4) {
-                        cout << "ÊäÈë²»ÕıÈ·£¬ÇëÖØĞÂÑ¡Ôñ£º";
+                        cout << "è¾“å…¥ä¸æ­£ç¡®ï¼Œè¯·é‡æ–°é€‰æ‹©ï¼š";
                         cin >> num2;
                     }
-                    // TODO: ½øĞĞnum2µÄÅĞ¶Ï£º
-                    if (num2 == 1) InsertData(tableName);// Ôö¼ÓÒ»ĞĞÊı¾İ
-                    else if (num2 == 2) DeleteData(tableName);// É¾³ıÒ»ĞĞÊı¾İ
-                    else if (num2 == 3) { // ²éÕÒÒ»ĞĞÊı¾İ
+                    // TODO: è¿›è¡Œnum2çš„åˆ¤æ–­ï¼š
+                    if (num2 == 1) InsertData(tableName);// å¢åŠ ä¸€è¡Œæ•°æ®
+                    else if (num2 == 2) DeleteData(tableName);// åˆ é™¤ä¸€è¡Œæ•°æ®
+                    else if (num2 == 3) { // æŸ¥æ‰¾ä¸€è¡Œæ•°æ®
                         struct Table *table = ReadTable(tableName);
                         InfoData(0, table);
-                    } else if (num2 == 4) EditData(tableName); // ĞŞ¸ÄÊı¾İ
+                    } else if (num2 == 4) EditData(tableName); // ä¿®æ”¹æ•°æ®
                 }
                 else {
-                    cout << "ÄúÏëÒª²Ù×÷µÄ±í²»´æÔÚ£¬ÇëÖØĞÂÊäÈë¡£" << endl;
+                    cout << "æ‚¨æƒ³è¦æ“ä½œçš„è¡¨ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚" << endl;
                 }
             }// num1 = 5
-        }// ÊäÈë±íÃû
-    }// Íâ²ãÑ­»·
+        }// è¾“å…¥è¡¨å
+    }// å¤–å±‚å¾ªç¯
 }
 
