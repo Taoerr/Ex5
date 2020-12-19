@@ -115,6 +115,7 @@ void OutputDisplay2(string *segmentName,
     cout << endl;
     struct Node *p = new Node;
     p = dataHead;
+    // 设置字段名的输出格式为左对齐并且宽度为0
     while (p != NULL) {
         for (int i = 0; i < totalLength; ++i) {
             if (display[i] == 1) {
