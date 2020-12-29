@@ -189,9 +189,7 @@ int DisplayTables() {
     }
     return 0;
 }
-
-
-//读取表的详细内容，返回表头指针
+//再次在此添加注释，这是用于读取数据表的函数
 struct Table *ReadTable(string tableName) {
     string filePath = "..\\databaseTables\\" + tableName + ".csv";
 //    cout << "文件路径是*********" << filePath << "*******\n";
